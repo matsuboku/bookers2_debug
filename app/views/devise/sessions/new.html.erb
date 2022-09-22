@@ -2,14 +2,14 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
       <h2>Log in</h2>
-      <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <div class="field">
           <%= f.label :name %><br />
           <%= f.text_field :name, autofocus: true, class: "name" %>
         </div>
         <div class="field">
           <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "password" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "password" %>
         </div>
         <% if devise_mapping.rememberable? -%>
           <div class="field">
