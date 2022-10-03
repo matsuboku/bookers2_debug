@@ -32,6 +32,9 @@
           <td class="comment_count">
             <%= render 'book_comments/comment_count', book: @book %>
           </td>
+          <td>
+            <p class="view-count">閲覧数: <%= @book_detail.view_counts.count %></p>
+          </td>
         </tr>
       </table>
       <div class="comments_area"><%= render '/book_comments/comment', book: @book, book_comment: @book_comment %></div>
