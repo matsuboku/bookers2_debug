@@ -21,7 +21,7 @@ class BooksController < ApplicationController
         b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
         a.favorited_users.includes(:favorites).where(created_at: from...to).size
       }
-    @books=Kaminari.paginate_array(books).page(params[:page]).per(5)
+    @books=Kaminari.paginate_array(books).page(params[:page])
   end
 
   def create

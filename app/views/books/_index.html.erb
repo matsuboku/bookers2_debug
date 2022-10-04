@@ -25,5 +25,6 @@
         <td class="view-count">閲覧数: <%= book.view_counts.count %></td>
       </tr>
     <% end %>
+    <%= paginate books %>
   </tbody>
 </table>
