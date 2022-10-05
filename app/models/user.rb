@@ -20,9 +20,9 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
-  
+
   has_many :view_counts, dependent: :destroy
-  
+
   has_many :books, dependent: :destroy
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
@@ -59,6 +59,16 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?","%#{word}%")
     else
       @user = User.all
+    end
+  end
+  
+  def self.search(search)
+    
+    if params[:created_at] == ""
+      @search_book = "日付を選択してください"#①
+    else
+      create_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
     end
   end
 end

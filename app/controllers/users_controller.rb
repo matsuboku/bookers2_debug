@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
     @last_week_book = @books.created_last_week
+
   end
 
   def index
@@ -26,6 +27,19 @@ class UsersController < ApplicationController
       redirect_to user_path, notice: "You have updated user successfully."
     else
       render "edit"
+    end
+  end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    @book = Book.new
+    if params[:created_at] == ""
+      @search_book = "日付を選択してください"#①
+    else
+      create_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
     end
   end
 
