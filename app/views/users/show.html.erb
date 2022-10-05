@@ -11,6 +11,8 @@
       <%= render 'books/index',books: @books %>
       <h2>投稿数の前日比・前週比</h2>
       <%= render 'counts', today_book: @today_book, yesterday_book: @yesterday_book, the_day_before: @the_day_before, this_week_book: @this_week_book, last_week_book: @last_week_book, the_week_before: @the_week_before %>
+      <h2>7日分の投稿数</h2>
+      <%= render 'chart', books: @books, yesterday_book: @yesterday_book, today_book: @today_book %>
     </div>
   </div>
 </div>
