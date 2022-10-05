@@ -61,14 +61,4 @@ class User < ApplicationRecord
       @user = User.all
     end
   end
-  
-  def self.search(search)
-    
-    if params[:created_at] == ""
-      @search_book = "日付を選択してください"#①
-    else
-      create_at = params[:created_at]
-      @search_book = @books.where(['created_at LIKE ? ', "#{create_at}%"]).count
-    end
-  end
 end
