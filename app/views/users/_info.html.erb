@@ -42,7 +42,7 @@
       <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
     <% end %>
   <% end %>
-  
+
   <!-- current_userと@userが一致していない場合に`Begin Chat`を表示 -->
 
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
