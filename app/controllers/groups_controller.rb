@@ -12,6 +12,12 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def join #追記！
+    @group = Group.find(params[:group_id])
+    @group.users << current_user
+    redirect_to  groups_path
+  end
+
   def new
     @group = Group.new
   end
@@ -35,6 +41,14 @@ class GroupsController < ApplicationController
     else
       render "edit"
     end
+  end
+  
+  # 追記
+  def destroy
+    @group = Group.find(params[:id])
+#current_userは、@group.usersから消されるという記述。
+    @group.users.delete(current_user)
+    redirect_to groups_path
   end
 
   private
