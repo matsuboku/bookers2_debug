@@ -1,14 +1,15 @@
 <div class="container">
-  <h3 class="margin_top text-center">送信が完了しました</h3>
-  <div class="main_width">
-    <div class="margin_top">
-      内容は以下の通りです。
-    </div>
-    <div class="small_margin_top">
-      [Title]<p class="font-weight-bold"> <%= @mail_title %></p>
-    </div>
-    <div>
-      [Content]<p class="font-weight-bold"> <%= safe_join(@mail_content.split("\n"),tag(:br)) %></p>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1>送信が完了しました</h1>
+
+      <p>内容は以下の通りです。</p>
+
+      <h6>[タイトル]</h6>
+      <p><%= @mail_title %></p>
+
+      <h5>[本文]</h5>
+      <p> <%= safe_join(@mail_content.split("\n"),tag(:br)) %></p>
     </div>
   </div>
 </div>
